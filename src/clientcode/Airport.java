@@ -2,6 +2,8 @@ package clientcode;
 
 import data.airport.model.FlightData;
 import data.airport.model.FlightDataCollection;
+import data.airport.model.totem.TotemArriving;
+import data.airport.model.totem.TotemTakingOff;
 
 import java.util.Scanner;
 
@@ -9,9 +11,18 @@ public class Airport {
     private static Scanner scanner = new Scanner(System.in);
     private FlightDataCollection collection = new FlightDataCollection();
 
+    TotemTakingOff totemTakingOff = new TotemTakingOff();
+    TotemArriving totemArriving =  new TotemArriving();
+
     public void run() {
+        collection.register(totemTakingOff);
+        collection.register(totemArriving);
+
         int option;
         do{
+            System.out.println(totemArriving.show());
+            System.out.println(totemTakingOff.show());
+
             System.out.println("1 - Novo voo");
             System.out.println("2 - Alterar estado");
             System.out.println("3 - Lista de Voos");
