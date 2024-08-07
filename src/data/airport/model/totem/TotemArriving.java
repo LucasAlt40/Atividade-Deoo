@@ -25,7 +25,17 @@ public class TotemArriving implements ITotem {
 
     @Override
     public String show() {
-        return "" ;
+        StringBuilder totemArriving = new StringBuilder();
+
+        totemArriving.append("+____________________________________________________________+\n");
+        totemArriving.append("|__________________________+Arriving+________________________|\n");
+        totemArriving.append("|____________________________________________________________|\n");
+        for(FlightData flight: flights){
+            totemArriving.append("|-").append(flight.toString()).append("|\n");
+        }
+        totemArriving.append("+____________________________________________________________+\n");
+
+        return totemArriving.toString();
     }
 
     @Override

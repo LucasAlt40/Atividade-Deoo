@@ -20,12 +20,12 @@ public class Airport {
 
         int option;
         do{
-            System.out.println(totemArriving.show());
-            System.out.println(totemTakingOff.show());
 
             System.out.println("1 - Novo voo");
             System.out.println("2 - Alterar estado");
             System.out.println("3 - Lista de Voos");
+            System.out.println("4 - Sala de Embarque");
+            System.out.println("5 - Sala de Desembarque");
             System.out.println("0 - Encerrar");
             System.out.println("Opção: ");
             option = scanner.nextInt();
@@ -45,7 +45,12 @@ public class Airport {
                         System.out.println(fligth);
                     }
                     break;
-
+                case 4:
+                    System.out.println(totemArriving.show());
+                    break;
+                case 5:
+                    System.out.println(totemTakingOff.show());
+                    break;
                 default:
                     System.out.println("Aeroporto fechado!");
                     break;

@@ -18,11 +18,11 @@ public class FlightData {
 
     @Override
     public String toString() {
-        return "Flight { number:" +
+        return "Flight | number:" +
                 flightNumber + ", company: " +
                 company + ", time: " +
                 time + ", state: " +
-                state.getClass().getSimpleName() + "} ";
+                state.getClass().getSimpleName() + "| ";
     }
 
     public Long getFlightNumber() {

@@ -25,8 +25,17 @@ public class TotemTakingOff implements ITotem {
 
     @Override
     public String show() {
-        return "";
+        StringBuilder totemTakingOff = new StringBuilder();
 
+        totemTakingOff.append("+____________________________________________________________+\n");
+        totemTakingOff.append("|__________________________+TakingOff+________________________|\n");
+        totemTakingOff.append("|____________________________________________________________|\n");
+        for(FlightData flight: flights){
+            totemTakingOff.append("|-").append(flight.toString()).append("|\n");
+        }
+        totemTakingOff.append("+____________________________________________________________+\n");
+
+        return totemTakingOff.toString();
     }
 
     @Override
