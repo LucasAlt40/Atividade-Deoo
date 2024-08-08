@@ -2,8 +2,9 @@ package clientcode;
 
 import data.airport.model.FlightData;
 import data.airport.model.FlightDataCollection;
-import data.airport.model.totem.TotemArriving;
-import data.airport.model.totem.TotemTakingOff;
+import data.airport.model.totem.Totem;
+import data.airport.states.Arriving;
+import data.airport.states.TakingOff;
 
 import java.util.Scanner;
 
@@ -11,12 +12,14 @@ public class Airport {
     private static Scanner scanner = new Scanner(System.in);
     private FlightDataCollection collection = new FlightDataCollection();
 
-    TotemTakingOff totemTakingOff = new TotemTakingOff();
-    TotemArriving totemArriving =  new TotemArriving();
+    Totem totemTakingOff = new Totem("Taking Off", TakingOff.getInstance());
+    Totem totemArriving = new Totem("Arriving", Arriving.getInstance());
+    Totem totemArrivingTakingOff = new Totem("Arriving Taking Off", TakingOff.getInstance(), Arriving.getInstance());
 
     public void run() {
         collection.register(totemTakingOff);
         collection.register(totemArriving);
+        collection.register(totemArrivingTakingOff);
 
         int option;
         do{
@@ -26,6 +29,7 @@ public class Airport {
             System.out.println("3 - Lista de Voos");
             System.out.println("4 - Sala de Embarque");
             System.out.println("5 - Sala de Desembarque");
+            System.out.println("6 - Sala de Desembarque/Embarque");
             System.out.println("0 - Encerrar");
             System.out.println("Opção: ");
             option = scanner.nextInt();
@@ -41,8 +45,8 @@ public class Airport {
                     break;
 
                 case 3:
-                    for (FlightData fligth : collection.allFlights()){
-                        System.out.println(fligth);
+                    for (FlightData flight : collection.allFlights()){
+                        System.out.println(flight);
                     }
                     break;
                 case 4:
@@ -50,6 +54,9 @@ public class Airport {
                     break;
                 case 5:
                     System.out.println(totemTakingOff.show());
+                    break;
+                case 6:
+                    System.out.println(totemArrivingTakingOff.show());
                     break;
                 default:
                     System.out.println("Aeroporto fechado!");
